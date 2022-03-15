@@ -1,26 +1,12 @@
-# Adafruit SHT31-D Temperature and Humidity Sensor Breakout [![Build Status](https://github.com/adafruit/Adafruit_SHT31/workflows/Arduino%20Library%20CI/badge.svg)](https://github.com/adafruit/Adafruit_SHT31/actions)[![Documentation](https://github.com/adafruit/ci-arduino/blob/master/assets/doxygen_badge.svg)](http://adafruit.github.io/Adafruit_SHT31/html/index.html)
+fork of adafruit sht31 to allow passing in an initialised wire pointer so can use non standard pins on esp8266
+requires the modified 
 
-<a href="https://www.adafruit.com/product/2857"><img src="assets/board.jpg?raw=true" width="500px"></a>
+https://github.com/pwr33/Adafruit_BusIO
 
-This is a library for the SHT31 Digital Humidity + Temp sensor.
+for the mods to the I2CDevice class
 
-It is designed specifically to work with the SHT31 Digital in the Adafruit shop:
+Basically problem arose because a chinese clone sensor board (sgp30) had labelled up sda/scl wrong way round on the silk screen (Doh!), so I wired up some stripboard incorrectly and to get it to work for testing purposes needed to do Wire.begin(5,4) (where default is (4,5))
 
-* https://www.adafruit.com/products/2857
+obviously now I have proved that is what it was I do not need it anymore after I rewire this stripboard and wire up the rest of the test ones correctly.
 
-These sensors use **I2C** to communicate, 2 pins are required to interface
-
-Adafruit invests time and resources providing this open source code,
-please support Adafruit and open-source hardware by purchasing
-products from Adafruit!
-
-Written by Limor Fried/Ladyada for Adafruit Industries.  
-BSD license, all text above must be included in any redistribution
-
-Check out the links above for our tutorials and wiring diagrams
-
-## Installation
-
-Use the Arduino Library Manager to install this library. If you're unfamiliar
-with how this works, we have a great tutorial on Arduino library installation
-at: http://learn.adafruit.com/adafruit-all-about-arduino-libraries-install-use
+However this will be useful if you want to use this library on an esp-01 that only has gpio 0 and 2 broken out to pins.
