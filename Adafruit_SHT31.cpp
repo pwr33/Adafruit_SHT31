@@ -48,12 +48,12 @@ Adafruit_SHT31::Adafruit_SHT31(TwoWire *theWire) {
  *
  * @return True if initialisation was successful, otherwise False.
  */
-bool Adafruit_SHT31::begin(uint8_t i2caddr) {
+bool Adafruit_SHT31::begin(uint8_t i2caddr, boolean initWire) {
   if (i2c_dev) {
     delete i2c_dev; // remove old interface
   }
 
-  i2c_dev = new Adafruit_I2CDevice(i2caddr, _wire);
+  i2c_dev = new Adafruit_I2CDevice(i2caddr, _wire, initWire);
 
   if (!i2c_dev->begin()) {
     return false;
