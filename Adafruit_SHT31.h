@@ -53,7 +53,7 @@ class Adafruit_SHT31 {
 public:
   Adafruit_SHT31(TwoWire *theWire = &Wire);
 
-  bool begin(uint8_t i2caddr = SHT31_DEFAULT_ADDR);
+  bool begin(uint8_t i2caddr = SHT31_DEFAULT_ADDR, boolean initWire=true);
   float readTemperature(void);
   float readHumidity(void);
   void readBoth(float *temperature_out, float *humidity_out);
